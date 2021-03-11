@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrarme</title>
+
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="container">
+        <form
+            id="form"
+            class="form"
+            autocomplete="off"
+        >
+        <p id="alert__submit-success">Registrado correctamente</p>
+        <p id="alert__submit-error">Error al registrar</p>
+
+        <h2 class="form__title">Registrarme</h2>
+            <input
+                type="text"
+                name="name"
+                placeholder="Nombre"
+                class="form__input"
+            />
+
+            <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                class="form__input"
+            />
+
+            <button
+                id="form__btn"
+                type="submit"
+                class="form__btn btn__signup"
+            >Registrarme</button>
+        </form>
+    </div>
+
+    <script>
+
+        const form = document.getElementById('form');
+        const inputs = document.getElementsByClassName('form__input');
+
+        const success = document.getElementById('alert__submit-success');
+        const error = document.getElementById('alert__submit-error');
+
+        const btnForm = document.getElementById('form__btn');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const user = {
+                name: inputs[0].value,
+                email: inputs[1].value
+            }
+
+            console.log(user);
+
+            await sendData(user);
+        });
+
+        const sendData = async (user) => {
+            try {
+                console.log(JSON.stringify(user));
+                btnForm.setAttribute('disabled', true);
+                const response = await fetch('http://localhost:4000/api/user/signup', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(user)
+                });
+
+                
+
+                const data = await response.json();
+
+                console.log(data)
+
+                if(data.success === true) {
+                    success.classList.add('active');
+                } else {
+                    error.classList.add('active');
+                }
+
+                setTimeout(() => {
+                    success.classList.remove('active');
+                    error.classList.remove('active');
+                }, 2500);
+
+                btnForm.setAttribute('disabled', false);
+
+            } catch (error) {
+                console.log(error);
+                btnForm.setAttribute('disabled', false);
+            }
+        }
+
+
+    </script>
+</body>
+</html>

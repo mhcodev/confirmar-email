@@ -1,0 +1,129 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+*::before, *::after {
+    box-sizing: border-box;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    background-color: #272727;
+    border-radius: 0.5rem;
+}
+
+.form__title {
+    color: white;
+    border-bottom: 3px solid #5ECA38;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding-bottom: 1rem;
+    margin-bottom: 2rem;
+}
+
+.form .form__input {
+    padding: 1rem;
+    border: none;
+    outline: none;
+    width: 21rem;
+    height: 4rem;
+    font-size: 14pt;
+    background-color: transparent;
+    border-bottom: 2px solid white;
+    color: white;
+    margin-bottom: 1rem;
+    transition: all 0.4s;
+}
+
+.form .form__input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.form .form__input:focus {
+    border-bottom-color: #FF3838;
+}
+
+.form__btn {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    width: 100%;
+    height: 3rem;
+    margin: auto;
+    border-radius: 0.5rem;
+    background-color: #41A6DF;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: white;
+    margin-top: 2rem;
+}
+
+#alert__submit-success,
+#alert__submit-error {
+    display: none;
+    padding: 1rem;
+    color: white;
+    margin-bottom: 1rem;
+    text-align: center;
+    border-radius: 0.5rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    transition: all 0.4s;
+}
+
+#alert__submit-success {
+    background-color: rgba(77, 255, 71, 0.7);
+}
+
+#alert__submit-error {
+    background-color: rgba(255, 0, 0, 0.7);
+}
+
+#alert__submit-success.active,
+#alert__submit-error.active {
+    display: block;
+}
+
+.alert_success,
+.alert_error {
+    padding: 2rem;
+    color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 18pt;
+    border-radius: 0.5rem;
+}
+
+.alert_success {
+    background-color: green;
+}
+
+.alert_error {
+    background-color: rgba(255, 0, 0, 0.7);
+}
+
+#email___content {
+    padding: 1rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#email___content img {
+    width: 6rem;
+    height: 6rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+#email___content h2,
+#email___content p {
+    margin-bottom: 0.5rem;
+}
